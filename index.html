@@ -1,0 +1,146 @@
+<html>
+    <head>
+    <title>
+        Make your own superhero
+    </title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body style="font-family: poiret one;">
+    <center>
+        <h1>
+            MAKE YOUR OWN SUPERHERO
+        </h1>
+        <div class="c">
+            <p id="height">Height : </p>
+            <p id="width">Width : </p>
+        </div>
+        <br><br>
+        <canvas id="canvas" class="canvas" width="1000px" height="500px"></canvas>
+    </center>
+    <script src="fabric.js"></script>
+    <script>
+        var canvas = new fabric.Canvas('canvas');
+
+        var blockWidth = 40;
+        var blockHeight = 40;
+
+        var playerObject = "";
+        var blockImage = "";
+
+        var playerX = 10;
+        var playerY = 10;
+        function playerUpdate() {
+            fabric.Image.fromURL("player.png", function (Img) {
+                playerImage = Img;
+              playerImage.scaleToWidth(150);
+              playerImage.scaleToHeight(140);
+              playerImage.set({
+              top: playerY,
+             left: playerX
+          });
+          canvas.add(playerObject);
+          });
+      }
+      newImage('player.png');
+      function newImage(getImage) {
+          fabric.Image.fromURL(getImage, function(Img) {
+              blockImage = Img;
+              blockImage.scaleToHeight(blockHeight);
+                blockImage.scaleToWidth(blockWidth);
+                blockImage.set({
+                    top: playerY,
+                    left: playerX
+                });
+                canvas.add(blockImage);
+            });
+        }
+
+        window.addEventListener("keydown", myKeyDown);
+
+        function myKeyDown(e) {
+            keyPressed = e.keyCode;
+            console.log(keyPressed + " key has been pressed");
+
+            if (e.shiftKey == true && keyPressed == '65') {
+                console.log("SHIFT AND A PRESSED TOGETHER");
+                blockHeight = blockHeight + 5;
+                blockWidth = blockWidth + 5;
+                document.getElementById("width").innerHTML = "Height : " + blockWidth;
+                document.getElementById("height").innerHTML = "Width : " + blockHeight;
+            }
+            if (e.shiftKey == true && keyPressed == '66') {
+                console.log("SHIFT AND A PRESSED TOGETHER");
+                blockHeight = blockHeight - 5;
+                blockWidth = blockWidth - 5;
+                document.getElementById("width").innerHTML = "Height : " + blockWidth;
+                document.getElementById("height").innerHTML = "Width : " + blockHeight;
+            }
+            if (keyPressed == '67') {
+                newImage('captain_america_left_hand.png');
+                console.log("C");
+            }
+            if (keyPressed == '68') {
+                newImage('hulk_face.png');
+                console.log("d");
+            }
+            
+            if (keyPressed == '72'){
+                up();
+                console.log("up");
+            }
+            if (keyPressed == '80'){
+                down();
+                console.log("down");
+            }
+            if (keyPressed == '75'){
+                left();
+                console.log("left");
+            }
+            if (keyPressed == '77'){
+                right();
+                console.log("right");
+            }
+        }
+
+function down() {
+    if (playerY <= 500) {
+        playerY = playerY + blockHeight;
+        console.log("Block Img Height =" + blockHeight);
+        console.log("When down pressed, X = " + playerX + " " + "Y = " + playerY);
+        canvas.remove(playerObject);
+        playerUpdate();
+    }
+}
+
+function left() {
+    if (playerX >= 0) {
+        playerX = playerX - blockHeight;
+        console.log("Block Img Height =" + blockHeight);
+        console.log("When left pressed, X = " + playerX + " " + "Y = " + playerY);
+        canvas.remove(playerObject);
+        playerUpdate();
+    }
+}
+
+function right() {
+    if (playerX <= 850) {
+        playerX = playerX + blockHeight;
+        console.log("Block Img Height =" + blockHeight);
+        console.log("When right pressed, X = " + playerX + " " + "Y = " + playerY);
+        canvas.remove(playerObject);
+        playerUpdate();
+    }
+}
+function up() {
+    if (playerY >= 0) {
+        playerY = playerY - blockHeight;
+        console.log("Block Img Height =" + blockHeight);
+        console.log("When up pressed, X = " + playerX + " " + "Y = " + playerY);
+        canvas.remove(playerObject);
+        playerUpdate();
+    }
+}
+    </script>
+</body></html>

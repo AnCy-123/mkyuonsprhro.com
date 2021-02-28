@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+html{
+    background-image: url('https://www.newstatesman.com/sites/default/files/styles/cropped_article_image/public/blogs_2019/05/avengers-endgame-marvel-mcu-easter-eggs-references_1_.jpg?itok=1EuPTtDN');
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+body{
+    filter: none;
+    -webkit-filter: none;
+    font-family: poiret one;
+    color: white;
+    font-weight: 800;
+    overflow: hidden;
+}
+.c{
+    background: linear-gradient(180deg ,#ffffff ,lightgrey 50%);
+    color: black;
+    padding: 15px 15px 15px 15px;
+    width: 50%;
+    font-size: 20px;
+    border-radius: 30px;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-bottom-width: 10px;
+}
+#canvas{
+    background: white;
+    border-style:ridge;
+    border-color: grey;
+    border-radius: 30px;
+    border-width: 1px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
